@@ -152,7 +152,8 @@ read(*,*) dt
 print*, 'Duration of the run: '
 read(*,*) t_end
 
-call setupCircle(3)
+!call setupCircle(6)
+call setupEight
 
 open(io, file=filename, iostat=stat)
 write(io,*) P(1)%pos(1),P(1)%pos(2),P(1)%pos(3)
@@ -161,6 +162,7 @@ E_begin = totalEnergy()
 
 do while(time<t_end)
   call advanceParticlesLeapFrog(dt)
+  !call advanceParticlesForwardEuler(dt)
   if(time>time_out) then 
      write(io,*) P(1)%pos(1),P(1)%pos(2),P(1)%pos(3)
      time_out = time_out+dt_out
@@ -216,6 +218,37 @@ enddo
 P(1)%vel(1) = P(1)%vel(1)*1.0001
 
 end subroutine setupCircle
+
+
+subroutine setupEight()
+
+implicit none
+
+N = 3
+allocate(P(N))
+
+  P(1)%pos(1) =  0.9700436 
+  P(1)%pos(2) = -0.24308753
+  P(1)%pos(3) =  0.0
+  P(1)%vel(1) =  0.466203685
+  P(1)%vel(2) =  0.43236573
+  P(1)%vel(3) =  0.0
+
+  P(2)%pos(1) = -P(1)%pos(1)
+  P(2)%pos(2) = -P(1)%pos(2)
+  P(2)%pos(3) = -P(1)%pos(3)
+  P(2)%vel(1) =  P(1)%vel(1)
+  P(2)%vel(2) =  P(1)%vel(2)
+  P(2)%vel(3) =  P(1)%vel(3)
+
+  P(3)%pos(1) =  0.0 
+  P(3)%pos(2) =  0.0 
+  P(3)%pos(3) =  0.0 
+  P(3)%vel(1) = -2.0*P(1)%vel(1)
+  P(3)%vel(2) = -2.0*P(1)%vel(2)
+  P(3)%vel(3) = -2.0*P(1)%vel(3)
+
+end subroutine setupEight
 
 subroutine setupOneParticle
 
