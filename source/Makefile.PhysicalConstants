@@ -1,0 +1,6 @@
+#
+# makefile for hydro module
+#
+
+PhysicalConstants += PhysicalConstants.o 
+

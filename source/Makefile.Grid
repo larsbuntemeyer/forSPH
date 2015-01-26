@@ -1,0 +1,8 @@
+#
+# makefile for grid module
+#
+
+Grid += Grid.o
+
+Grid.o : RuntimeParameters.o 
+

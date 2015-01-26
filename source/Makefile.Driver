@@ -1,0 +1,8 @@
+#
+# makefile for driver module
+#
+
+Driver += Driver.o 
+
+Driver.o : Hydro.o Eos.o RuntimeParameters.o Grid.o Database.o Simulation.o Io.o
+

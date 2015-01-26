@@ -1,0 +1,8 @@
+#
+# makefile for hydro module
+#
+
+Hydro += Hydro.o 
+
+Hydro.o : Grid.o Database.o RuntimeParameters.o 
+

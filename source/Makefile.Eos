@@ -1,0 +1,7 @@
+#
+# makefile for hydro module
+#
+
+Eos = Eos.o 
+
+Eos.o : Grid.o Database.o RuntimeParameters.o PhysicalConstants.o
