@@ -1,0 +1,11 @@
+#
+# makefile for database module
+#
+
+sph += sph.o advanceParticlesLeapFrog.o computeForces.o
+
+sph.o : particles.o
+
+advanceParticlesLeapFrog.o : sph.o computeForces.o
+
+computeForces.o : sph.o

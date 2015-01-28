@@ -1,8 +1,0 @@
-#
-# makefile for database module
-#
-
-Database += Database.o 
-
-Database.o : Grid.o 
-

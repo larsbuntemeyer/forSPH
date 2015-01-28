@@ -1,8 +1,0 @@
-#
-# makefile for driver module
-#
-
-Simulation += Simulation.o 
-
-Simulation.o : Grid.o Database.o RuntimeParameters.o
-

@@ -1,7 +1,0 @@
-#
-# makefile for database module
-#
-
-RuntimeParameters += RuntimeParameters.o 
-
-RuntimeParameters.o : 

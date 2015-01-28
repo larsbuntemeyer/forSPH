@@ -4,7 +4,7 @@
 
 F90 = gfortran
 #F90 = ifort
-EXE = nerd
+EXE = forSPH
 
 SOURCE  = ../source
 INCLUDE = ../include
@@ -15,31 +15,22 @@ CFLAGS  = #-check all
 # linker flags
 LFLAGS  =
 
-vpath %.F90 $(SOURCE) 
+vpath %.f90 $(SOURCE) 
 vpath %.h   $(INCLUDE)
 
 # Link
 $(EXE): $(EXE).o $(OBJECTS) 
 	$(F90) $(EXE).o $(OBJECTS) $(LFLAGS) -o $(EXE)
 
-include $(SOURCE)/Makefile.Database
-include $(SOURCE)/Makefile.Eos
-include $(SOURCE)/Makefile.Driver
-include $(SOURCE)/Makefile.Grid
-include $(SOURCE)/Makefile.Hydro
-include $(SOURCE)/Makefile.RuntimeParameters
-include $(SOURCE)/Makefile.Simulation
-include $(SOURCE)/Makefile.Io
-include $(SOURCE)/Makefile.PhysicalConstants
+include $(SOURCE)/Makefile.sph
+include $(SOURCE)/Makefile.particles
 
-OBJECTS = $(Database) $(Driver) $(Grid) $(Hydro) \
-          $(RuntimeParameters) $(Simulation) $(Io) \
-          $(Eos) $(PhysicalConstants) 
+OBJECTS = $(sph) $(particles)
 
 # Compile
 $(EXE).o : $(OBJECTS)
 
-%.o: %.F90 
+%.o: %.f90 
 	$(F90) -c $(CFLAGS) $<
 
 clean:

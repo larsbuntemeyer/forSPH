@@ -1,0 +1,6 @@
+#
+# makefile for database module
+#
+
+particles += particles.o
+
